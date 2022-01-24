@@ -13,7 +13,16 @@ class CrateTravelsAgency extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('travels', function (Blueprint $table) {
+            $table->id();
+            $table->string('travel_name', 100);
+            $table->string('destination', 100);
+            $table->string('description', 1000);
+            $table->integer('price')->unsigned();
+            $table->integer('duration')->unsigned();
+            $table->boolean('is_available')->default(1);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class CrateTravelsAgency extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('travels');
     }
 }
